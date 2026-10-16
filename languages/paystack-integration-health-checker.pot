@@ -1,0 +1,2781 @@
+# Copyright (C) 2026 Benneth Nyekefamo
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Paystack Integration Health Checker 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/paystack-integration-health-checker\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-16T02:53:16+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: paystack-integration-health-checker\n"
+
+#. Plugin Name of the plugin
+#: paystack-integration-health-checker.php
+#: admin/views/page.php:18
+#: includes/admin/class-admin-controller.php:261
+#: includes/admin/class-admin-page.php:70
+#: includes/admin/class-admin-page.php:72
+msgid "Paystack Integration Health Checker"
+msgstr ""
+
+#. Description of the plugin
+#: paystack-integration-health-checker.php
+msgid "Diagnoses Paystack payment integrations: configuration, API connectivity and authentication, webhooks, WooCommerce compatibility and payment flow. Read-only: it never changes orders or gateway settings. Independent project &mdash; not affiliated with or endorsed by Paystack."
+msgstr ""
+
+#. Author of the plugin
+#: paystack-integration-health-checker.php
+msgid "Benneth Nyekefamo"
+msgstr ""
+
+#: admin/views/page.php:20
+msgid "Read-only diagnostics for your Paystack integration. The checker never changes orders, gateway settings or store settings, and never shows your secret keys."
+msgstr ""
+
+#: admin/views/page.php:24
+msgid "Done. Results are shown below."
+msgstr ""
+
+#: admin/views/page.php:30
+msgid "Health checker sections"
+msgstr ""
+
+#: admin/views/settings-form.php:17
+msgid "Automatic (first enabled Paystack gateway)"
+msgstr ""
+
+#: admin/views/settings-form.php:22
+msgid "Health checker settings"
+msgstr ""
+
+#: admin/views/settings-form.php:23
+msgid "These settings belong to the health checker only. Gateway settings are read, never changed."
+msgstr ""
+
+#: admin/views/settings-form.php:29
+msgid "Integration to diagnose"
+msgstr ""
+
+#: admin/views/settings-form.php:39
+msgid "Manual configuration"
+msgstr ""
+
+#: admin/views/settings-form.php:41
+msgid "For custom integrations or sites without WooCommerce. Prefer defining PIHC_TEST_SECRET_KEY / PIHC_LIVE_SECRET_KEY (and *_PUBLIC_KEY) in wp-config.php. Leave a key field empty to keep the saved value."
+msgstr ""
+
+#: admin/views/settings-form.php:43
+msgid "Manual environment"
+msgstr ""
+
+#: admin/views/settings-form.php:44
+#: admin/views/tab-overview.php:77
+msgid "Test"
+msgstr ""
+
+#: admin/views/settings-form.php:46
+#: admin/views/tab-overview.php:77
+msgid "Live"
+msgstr ""
+
+#: admin/views/settings-form.php:48
+msgid "My integration uses Paystack Popup/Inline (needs a public key)"
+msgstr ""
+
+#. translators: 1: test/live, 2: secret/public
+#: admin/views/settings-form.php:60
+#, php-format
+msgid "%1$s %2$s key"
+msgstr ""
+
+#: admin/views/settings-form.php:64
+msgid "Defined in wp-config.php"
+msgstr ""
+
+#: admin/views/settings-form.php:64
+msgid "Not set"
+msgstr ""
+
+#: admin/views/settings-form.php:66
+msgid "Remove saved key"
+msgstr ""
+
+#: admin/views/settings-form.php:74
+msgid "History retention"
+msgstr ""
+
+#: admin/views/settings-form.php:76
+msgid "Keep at most"
+msgstr ""
+
+#: admin/views/settings-form.php:76
+msgid "runs"
+msgstr ""
+
+#: admin/views/settings-form.php:78
+msgid "for at most"
+msgstr ""
+
+#: admin/views/settings-form.php:78
+msgid "days"
+msgstr ""
+
+#: admin/views/settings-form.php:82
+msgid "Save health checker settings"
+msgstr ""
+
+#: admin/views/tab-checks.php:20
+#: admin/views/tab-overview.php:80
+msgid "Paystack configuration"
+msgstr ""
+
+#: admin/views/tab-checks.php:21
+msgid "Server environment"
+msgstr ""
+
+#: admin/views/tab-checks.php:23
+msgid "Paystack API"
+msgstr ""
+
+#: admin/views/tab-checks.php:24
+msgid "Webhooks"
+msgstr ""
+
+#: admin/views/tab-checks.php:25
+#: admin/views/tab-overview.php:84
+msgid "WooCommerce"
+msgstr ""
+
+#: admin/views/tab-checks.php:29
+msgid "Checks of the keys, environment and site settings the integration depends on. Key format checks are local; \"API authentication\" (API Connectivity tab) is the authoritative test of a key."
+msgstr ""
+
+#: admin/views/tab-checks.php:30
+msgid "One read-only request to Paystack's documented \"Fetch Timeout\" endpoint confirms both that this server can reach Paystack and that the secret key is accepted. No payment is created."
+msgstr ""
+
+#: admin/views/tab-checks.php:31
+msgid "Webhook checks run from this server against its own webhook URL. A successful response shows the handler runs here; it does not guarantee Paystack can reach it or that real events are processed correctly. Paystack's dashboard shows the outcome of each real delivery. These checks never send payment events."
+msgstr ""
+
+#: admin/views/tab-checks.php:32
+msgid "Compatibility of the Paystack gateway with your WooCommerce setup, read from WooCommerce itself. The health checker's own compatibility is listed separately. Nothing here changes your store settings."
+msgstr ""
+
+#: admin/views/tab-history.php:24
+msgid "Full run"
+msgstr ""
+
+#: admin/views/tab-history.php:25
+msgid "Single check"
+msgstr ""
+
+#: admin/views/tab-history.php:26
+msgid "Reference verification"
+msgstr ""
+
+#: admin/views/tab-history.php:45
+msgid "All runs"
+msgstr ""
+
+#. translators: %d: run ID
+#: admin/views/tab-history.php:49
+#, php-format
+msgid "Run #%d"
+msgstr ""
+
+#: admin/views/tab-history.php:54
+msgid "Download JSON"
+msgstr ""
+
+#: admin/views/tab-history.php:55
+msgid "Download text"
+msgstr ""
+
+#: admin/views/tab-history.php:58
+msgid "Comparison with previous runs"
+msgstr ""
+
+#: admin/views/tab-history.php:62
+#: admin/views/tab-tools.php:62
+msgid "Check"
+msgstr ""
+
+#: admin/views/tab-history.php:63
+msgid "Recent statuses (newest first)"
+msgstr ""
+
+#: admin/views/tab-history.php:82
+#: admin/views/tab-history.php:108
+msgid "Results"
+msgstr ""
+
+#. translators: 1: max runs, 2: max days
+#: admin/views/tab-history.php:91
+#, php-format
+msgid "Stored history is limited to %1$d runs and %2$d days (change under Configuration). Only sanitized results are stored: no keys, authorization headers or customer data."
+msgstr ""
+
+#: admin/views/tab-history.php:99
+msgid "No diagnostic runs stored."
+msgstr ""
+
+#: admin/views/tab-history.php:104
+msgid "Run"
+msgstr ""
+
+#: admin/views/tab-history.php:105
+msgid "Date"
+msgstr ""
+
+#: admin/views/tab-history.php:106
+msgid "Type"
+msgstr ""
+
+#: admin/views/tab-history.php:107
+msgid "Overall"
+msgstr ""
+
+#: admin/views/tab-history.php:109
+msgid "Actions"
+msgstr ""
+
+#: admin/views/tab-history.php:127
+msgid "View"
+msgstr ""
+
+#: admin/views/tab-history.php:128
+msgid "JSON"
+msgstr ""
+
+#: admin/views/tab-history.php:129
+msgid "Text"
+msgstr ""
+
+#: admin/views/tab-history.php:130
+msgid "Delete this run?"
+msgstr ""
+
+#: admin/views/tab-history.php:134
+msgid "Delete"
+msgstr ""
+
+#: admin/views/tab-history.php:141
+msgid "Delete ALL stored diagnostic history? This cannot be undone."
+msgstr ""
+
+#: admin/views/tab-history.php:144
+msgid "Delete all history"
+msgstr ""
+
+#: admin/views/tab-overview.php:34
+#: includes/admin/class-result-renderer.php:161
+msgid "Overall health"
+msgstr ""
+
+#: admin/views/tab-overview.php:35
+msgid "Not checked yet"
+msgstr ""
+
+#: admin/views/tab-overview.php:36
+msgid "Run diagnostics to see results."
+msgstr ""
+
+#: admin/views/tab-overview.php:46
+msgid "Run Diagnostics"
+msgstr ""
+
+#: admin/views/tab-overview.php:63
+msgid "Download Diagnostic Report (JSON)"
+msgstr ""
+
+#: admin/views/tab-overview.php:64
+msgid "Download as text"
+msgstr ""
+
+#: admin/views/tab-overview.php:68
+msgid "Environment"
+msgstr ""
+
+#: admin/views/tab-overview.php:72
+msgid "Integration diagnosed"
+msgstr ""
+
+#: admin/views/tab-overview.php:73
+msgid "None found"
+msgstr ""
+
+#: admin/views/tab-overview.php:76
+msgid "Paystack environment"
+msgstr ""
+
+#: admin/views/tab-overview.php:81
+msgid "Not configured"
+msgstr ""
+
+#: admin/views/tab-overview.php:81
+msgid "Secret key present for the active environment"
+msgstr ""
+
+#: admin/views/tab-overview.php:81
+msgid "Secret key missing for the active environment"
+msgstr ""
+
+#. translators: %s: version
+#: admin/views/tab-overview.php:89
+#, php-format
+msgid "Active (version %s)"
+msgstr ""
+
+#: admin/views/tab-overview.php:91
+msgid "Installed, not active"
+msgstr ""
+
+#: admin/views/tab-overview.php:93
+msgid "Not installed"
+msgstr ""
+
+#: admin/views/tab-overview.php:99
+msgid "Last diagnostic run"
+msgstr ""
+
+#: admin/views/tab-overview.php:100
+msgid "Never"
+msgstr ""
+
+#: admin/views/tab-overview.php:105
+msgid "Results by section"
+msgstr ""
+
+#: admin/views/tab-overview.php:108
+msgid "No results yet."
+msgstr ""
+
+#: admin/views/tab-overview.php:119
+msgid "Needs your attention"
+msgstr ""
+
+#: admin/views/tab-overview.php:122
+msgid "No failures or warnings in the latest run."
+msgstr ""
+
+#: admin/views/tab-overview.php:137
+msgid "How the overall status is calculated"
+msgstr ""
+
+#: admin/views/tab-overview.php:139
+msgid "Any FAIL makes the overall status \"Problems found\"; otherwise any WARNING makes it \"Needs attention\"; only passes make it \"Healthy\". The score counts PASS as 1 and WARNING as 0.5, divided by the checks that were actually evaluated. SKIPPED checks never raise or lower the score; the percentage of evaluated checks is shown instead."
+msgstr ""
+
+#: admin/views/tab-payments.php:39
+msgid "Checkout initiation"
+msgstr ""
+
+#: admin/views/tab-payments.php:39
+msgid "Gateway enabled and available; checkout pages; currency."
+msgstr ""
+
+#: admin/views/tab-payments.php:39
+msgid "Verified by checks"
+msgstr ""
+
+#: admin/views/tab-payments.php:40
+msgid "Transaction initialization"
+msgstr ""
+
+#: admin/views/tab-payments.php:40
+msgid "Keys and API access. Actual initialization needs a real (test) checkout; the checker never initializes transactions."
+msgstr ""
+
+#: admin/views/tab-payments.php:40
+msgid "Prerequisites verified; needs a test payment"
+msgstr ""
+
+#: admin/views/tab-payments.php:41
+msgid "Customer redirect / checkout handoff"
+msgstr ""
+
+#: admin/views/tab-payments.php:41
+msgid "Happens in the customer's browser. Public key needed for Popup/Inline."
+msgstr ""
+
+#: admin/views/tab-payments.php:41
+msgid "Needs a test payment"
+msgstr ""
+
+#: admin/views/tab-payments.php:42
+msgid "Transaction verification"
+msgstr ""
+
+#: admin/views/tab-payments.php:42
+msgid "Server-side Verify API call. Test it below with a real test reference."
+msgstr ""
+
+#: admin/views/tab-payments.php:42
+msgid "Verifiable with a reference"
+msgstr ""
+
+#: admin/views/tab-payments.php:43
+msgid "Webhook reception"
+msgstr ""
+
+#: admin/views/tab-payments.php:43
+msgid "Handler registration and loopback response. Real delivery is shown in Paystack's dashboard."
+msgstr ""
+
+#: admin/views/tab-payments.php:43
+msgid "Partially verifiable"
+msgstr ""
+
+#: admin/views/tab-payments.php:44
+msgid "Order / payment-state update"
+msgstr ""
+
+#: admin/views/tab-payments.php:44
+msgid "Evidence from recent orders; reference verification with an order ID compares both sides."
+msgstr ""
+
+#: admin/views/tab-payments.php:44
+msgid "Verified from order evidence"
+msgstr ""
+
+#: admin/views/tab-payments.php:45
+msgid "Duplicate-notification handling"
+msgstr ""
+
+#: admin/views/tab-payments.php:45
+msgid "Internal to the gateway; only visible in its order notes and logs. Not verifiable without instrumenting the gateway."
+msgstr ""
+
+#: admin/views/tab-payments.php:45
+msgid "Not verifiable by the checker"
+msgstr ""
+
+#: admin/views/tab-payments.php:46
+msgid "Error logging and recovery"
+msgstr ""
+
+#: admin/views/tab-payments.php:46
+msgid "WooCommerce logs written by the gateway and fatal errors."
+msgstr ""
+
+#: admin/views/tab-payments.php:46
+msgid "Verified where the gateway logs"
+msgstr ""
+
+#: admin/views/tab-payments.php:49
+msgid "A Paystack payment passes through several stages. The table shows which the health checker can verify on its own and which need a real test-mode payment."
+msgstr ""
+
+#: admin/views/tab-payments.php:54
+msgid "Stage"
+msgstr ""
+
+#: admin/views/tab-payments.php:55
+msgid "What is checked"
+msgstr ""
+
+#: admin/views/tab-payments.php:56
+msgid "Verifiability"
+msgstr ""
+
+#: admin/views/tab-payments.php:57
+msgid "Latest status"
+msgstr ""
+
+#: admin/views/tab-payments.php:67
+msgid "Not checked"
+msgstr ""
+
+#: admin/views/tab-payments.php:73
+msgid "Evidence from recent orders"
+msgstr ""
+
+#: admin/views/tab-payments.php:78
+msgid "Verify a test transaction"
+msgstr ""
+
+#: admin/views/tab-payments.php:83
+msgid "The integration is in LIVE mode."
+msgstr ""
+
+#: admin/views/tab-payments.php:84
+msgid "Verification is read-only and safe, but for testing switch the gateway to test mode and use Paystack's test cards."
+msgstr ""
+
+#: admin/views/tab-payments.php:86
+msgid "Confirm the integration is in test mode (Configuration tab) and place an order using one of Paystack's documented test cards."
+msgstr ""
+
+#: admin/views/tab-payments.php:89
+msgid "Paystack test payments"
+msgstr ""
+
+#: admin/views/tab-payments.php:89
+#: admin/views/tab-tools.php:91
+#: includes/admin/class-result-renderer.php:251
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: admin/views/tab-payments.php:91
+msgid "Copy the transaction reference from the Paystack dashboard (Transactions) or from the order notes."
+msgstr ""
+
+#: admin/views/tab-payments.php:92
+msgid "Enter it below, optionally with the WooCommerce order ID to compare both sides. The order is only read, never changed."
+msgstr ""
+
+#: admin/views/tab-payments.php:99
+msgid "Transaction reference"
+msgstr ""
+
+#: admin/views/tab-payments.php:104
+msgid "Order ID (optional)"
+msgstr ""
+
+#: admin/views/tab-payments.php:108
+msgid "Verify with Paystack"
+msgstr ""
+
+#: admin/views/tab-tools.php:18
+msgid "What the statuses mean"
+msgstr ""
+
+#: admin/views/tab-tools.php:21
+msgid "The check ran and the requirement was satisfied."
+msgstr ""
+
+#: admin/views/tab-tools.php:23
+msgid "The check ran and found a potential problem: something that often causes failures, or evidence that is suggestive but not conclusive."
+msgstr ""
+
+#: admin/views/tab-tools.php:25
+msgid "The check ran and its evidence confirms a problem (for example, Paystack answered 401 to the configured key)."
+msgstr ""
+
+#: admin/views/tab-tools.php:27
+msgid "The check could not be performed (missing prerequisite, not observable, or unsafe). It does not count toward the score."
+msgstr ""
+
+#: admin/views/tab-tools.php:30
+msgid "Troubleshooting guide"
+msgstr ""
+
+#: admin/views/tab-tools.php:31
+msgid "Each topic lists possible causes and how to confirm which one applies. A diagnostic result only states a cause as confirmed when its own evidence proves it."
+msgstr ""
+
+#: admin/views/tab-tools.php:35
+msgid "Symptoms:"
+msgstr ""
+
+#: admin/views/tab-tools.php:36
+msgid "Possible causes"
+msgstr ""
+
+#: admin/views/tab-tools.php:42
+msgid "How to confirm"
+msgstr ""
+
+#: admin/views/tab-tools.php:48
+msgid "Fix"
+msgstr ""
+
+#: admin/views/tab-tools.php:57
+msgid "All checks"
+msgstr ""
+
+#: admin/views/tab-tools.php:61
+msgid "ID"
+msgstr ""
+
+#: admin/views/tab-tools.php:63
+msgid "In full run"
+msgstr ""
+
+#: admin/views/tab-tools.php:64
+msgid "Network"
+msgstr ""
+
+#: admin/views/tab-tools.php:72
+#: admin/views/tab-tools.php:73
+msgid "Yes"
+msgstr ""
+
+#: admin/views/tab-tools.php:72
+msgid "Manual only"
+msgstr ""
+
+#: admin/views/tab-tools.php:73
+msgid "No"
+msgstr ""
+
+#: admin/views/tab-tools.php:79
+#: includes/admin/class-result-renderer.php:251
+msgid "Documentation"
+msgstr ""
+
+#: admin/views/tab-tools.php:83
+msgid "Paystack API reference"
+msgstr ""
+
+#: admin/views/tab-tools.php:84
+msgid "API keys and authentication"
+msgstr ""
+
+#: admin/views/tab-tools.php:85
+msgid "Webhooks (signature validation, retries, IP addresses)"
+msgstr ""
+
+#: admin/views/tab-tools.php:86
+msgid "Verifying payments and transaction statuses"
+msgstr ""
+
+#: admin/views/tab-tools.php:87
+msgid "Test payments"
+msgstr ""
+
+#: admin/views/tab-tools.php:88
+msgid "Rate limits"
+msgstr ""
+
+#: admin/views/tab-tools.php:95
+msgid "Independent project; not affiliated with or endorsed by Paystack."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:86
+msgid "Diagnostics finished."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:104
+msgid "Unknown check."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:109
+msgid "Please confirm that you want to send the signed test event."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:116
+msgid "Check finished."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:136
+msgid "Enter a valid Paystack reference (letters, digits, \"-\", \".\" and \"=\" only)."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:139
+msgid "You are not allowed to inspect orders."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:147
+msgid "Verification finished."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:168
+msgid "No diagnostic run to export. Run diagnostics first."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:189
+msgid "Run deleted."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:198
+msgid "All diagnostic history was deleted."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:209
+#: includes/admin/class-admin-page.php:140
+msgid "You are not allowed to use the Paystack health checker."
+msgstr ""
+
+#: includes/admin/class-admin-controller.php:214
+msgid "Your session expired or the request was not valid. Reload the page and try again."
+msgstr ""
+
+#. translators: %d: seconds
+#: includes/admin/class-admin-controller.php:221
+#, php-format
+msgid "Too many requests. Please wait %d seconds and try again."
+msgstr ""
+
+#: includes/admin/class-admin-page.php:53
+msgid "Overview"
+msgstr ""
+
+#: includes/admin/class-admin-page.php:54
+msgid "Configuration"
+msgstr ""
+
+#: includes/admin/class-admin-page.php:55
+msgid "API Connectivity"
+msgstr ""
+
+#: includes/admin/class-admin-page.php:56
+msgid "Webhook Diagnostics"
+msgstr ""
+
+#: includes/admin/class-admin-page.php:57
+msgid "WooCommerce Compatibility"
+msgstr ""
+
+#: includes/admin/class-admin-page.php:58
+msgid "Payment Diagnostics"
+msgstr ""
+
+#: includes/admin/class-admin-page.php:59
+msgid "Diagnostic History"
+msgstr ""
+
+#: includes/admin/class-admin-page.php:60
+msgid "Tools & Documentation"
+msgstr ""
+
+#: includes/admin/class-admin-page.php:68
+msgid "Paystack Health Check"
+msgstr ""
+
+#: includes/admin/class-admin-page.php:107
+msgid "Run diagnostics"
+msgstr ""
+
+#: includes/admin/class-admin-page.php:128
+msgid "Running…"
+msgstr ""
+
+#: includes/admin/class-admin-page.php:129
+msgid "The request failed. Please try again."
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:35
+msgid "PASS"
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:36
+msgid "WARNING"
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:37
+msgid "FAIL"
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:38
+msgid "SKIPPED"
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:92
+msgid "NOT RUN"
+msgstr ""
+
+#. translators: 1: date/time, 2: milliseconds
+#: includes/admin/class-result-renderer.php:108
+#, php-format
+msgid "Checked %1$s · %2$s ms"
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:117
+msgid "What to do next"
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:127
+msgid "Technical details and evidence"
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:167
+msgid "Score: n/a (nothing could be evaluated)"
+msgstr ""
+
+#. translators: 1: score, 2: coverage percent
+#: includes/admin/class-result-renderer.php:169
+#, php-format
+msgid "Score %1$d/100 · %2$d%% of checks evaluated"
+msgstr ""
+
+#. translators: 1: run ID, 2: date
+#: includes/admin/class-result-renderer.php:185
+#, php-format
+msgid "Run #%1$d · %2$s"
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:218
+msgid "none"
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:231
+msgid "Open settings"
+msgstr ""
+
+#. translators: %s: troubleshooting topic
+#: includes/admin/class-result-renderer.php:247
+#, php-format
+msgid "Troubleshooting: %s"
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:273
+msgid "I understand this sends a signed, non-payment test event to this site's webhook URL. It cannot change orders."
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:277
+msgid "Send signed test event"
+msgstr ""
+
+#: includes/admin/class-result-renderer.php:277
+msgid "Run this check"
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:37
+msgid "Paystack integration detected"
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:37
+msgid "Finds supported Paystack integrations and which one is being diagnosed; warns when several Paystack gateways are enabled."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:38
+msgid "Secret key configured"
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:38
+msgid "A secret key exists for the active environment (shown masked)."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:39
+msgid "Secret key format (local check)"
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:39
+msgid "The secret key has the documented sk_test_/sk_live_ prefix. Local check only; it does not prove the key works."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:40
+msgid "Environment matches credentials"
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:40
+msgid "Test mode uses test keys and live mode uses live keys."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:41
+msgid "Public key"
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:41
+msgid "A public key is configured when the integration needs one (Paystack Popup/Inline), and no secret key was pasted into a public key field."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:42
+msgid "Site URL and HTTPS"
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:42
+msgid "The site uses HTTPS (required for live payments and webhooks) and its home and site URLs agree."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:43
+msgid "WordPress settings affecting payments"
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:43
+msgid "Settings that commonly break payment callbacks: WP-Cron disabled, PHP errors displayed in responses, maintenance mode."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:92
+msgid "The integration selected in the health checker settings is not active."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:95
+msgid "Activate that plugin, or set \"Integration to diagnose\" to Automatic in the Configuration tab."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:100
+msgid "No Paystack integration was found."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:102
+msgid "Neither a supported Paystack WooCommerce gateway is active nor are keys entered in the health checker, so there is nothing to diagnose."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:105
+msgid "Install and activate a Paystack gateway for WooCommerce, or"
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:106
+msgid "enter your keys under Configuration > Health checker settings to diagnose a custom integration."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:116
+msgid "More than one Paystack gateway is enabled."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:118
+msgid "Paystack sends webhooks for each environment to a single URL, so only one of these gateways can receive them. Orders paid through the other may never be confirmed by webhook."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:120
+msgid "Disable the Paystack gateway you do not use, or make sure the dashboard webhook URL belongs to the gateway that processes your orders."
+msgstr ""
+
+#. translators: %s: integration name
+#: includes/checks/class-configuration-checks.php:128
+#, php-format
+msgid "Diagnosing: %s."
+msgstr ""
+
+#. translators: %s: test or live
+#: includes/checks/class-configuration-checks.php:146
+#, php-format
+msgid "No secret key is configured for the %s environment."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:148
+msgid "Every Paystack API call (initialize, verify) and webhook signature check needs the secret key of the active environment."
+msgstr ""
+
+#. translators: %s: test or live
+#: includes/checks/class-configuration-checks.php:155
+#, php-format
+msgid "Copy the %s secret key from Paystack Dashboard > Settings > API Keys & Webhooks."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:156
+msgid "Paste it into the integration settings (link in the evidence) and run the checks again."
+msgstr ""
+
+#. translators: %s: test or live
+#: includes/checks/class-configuration-checks.php:165
+#, php-format
+msgid "A %s secret key is configured."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:192
+msgid "A public key (pk_...) is saved where the secret key belongs."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:194
+msgid "Paystack documents pk_ as the public-key prefix. Public keys cannot authenticate server-side API requests."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:196
+msgid "Replace it with the secret key (sk_...) from the Paystack dashboard."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:204
+msgid "The secret key does not match the documented sk_test_/sk_live_ format."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:206
+msgid "This is a local check. An unexpected format usually means a copy/paste mistake, but only the API authentication check can prove whether the key works."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:208
+msgid "Run \"API authentication\". If it fails, copy the key again from the Paystack dashboard."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:215
+msgid "The secret key has the documented format."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:217
+msgid "Format only; see \"API authentication\" for whether Paystack accepts the key."
+msgstr ""
+
+#. translators: 1: key environment, 2: selected environment
+#: includes/checks/class-configuration-checks.php:243
+#, php-format
+msgid "the secret key is a %1$s key but %2$s mode is selected"
+msgstr ""
+
+#. translators: 1: key environment, 2: selected environment
+#: includes/checks/class-configuration-checks.php:247
+#, php-format
+msgid "the public key is a %1$s key but %2$s mode is selected"
+msgstr ""
+
+#. translators: %s: list of mismatches
+#: includes/checks/class-configuration-checks.php:253
+#, php-format
+msgid "Environment mismatch: %s."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:255
+msgid "Test and live environments have separate keys. Mixing them sends transactions to the wrong environment and makes webhook signatures fail."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:257
+msgid "Save keys for the selected environment in the matching fields, or switch the mode."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:265
+msgid "The environment of the secret key cannot be determined from its prefix."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:268
+msgid "See \"Secret key format\" and \"API authentication\"."
+msgstr ""
+
+#. translators: %s: test or live
+#: includes/checks/class-configuration-checks.php:276
+#, php-format
+msgid "Keys match the selected %s environment."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:298
+msgid "A secret key is saved in a public key field."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:300
+msgid "Public keys are sent to customers' browsers. A secret key there is exposed to anyone who views the checkout page."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:303
+msgid "Replace it with the public key (pk_...)."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:304
+msgid "Treat the exposed secret key as compromised: generate a new one in the Paystack dashboard."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:313
+msgid "This configuration does not need a public key."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:315
+msgid "Server-side redirect checkouts only use the secret key."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:323
+msgid "The integration uses Paystack Popup/Inline but no public key is configured."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:325
+msgid "The popup checkout is opened in the browser with the public key; without it customers cannot pay."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:327
+msgid "Copy the public key for the active environment from the Paystack dashboard into the integration settings."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:335
+msgid "The public key does not match the documented pk_test_/pk_live_ format."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:343
+msgid "A public key with the documented format is configured."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:365
+msgid "The Home URL and Site URL use different hosts."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:367
+msgid "Callback and webhook URLs are built from the Home URL. If visitors use another host, cookies and redirects after payment may break."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:369
+msgid "Check Settings > General."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:376
+msgid "Paystack requires HTTPS for live integrations, and webhooks carry payment confirmations that should never travel unencrypted."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:378
+msgid "Install a TLS certificate and switch the Home and Site URLs to https."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:382
+msgid "The site is not served over HTTPS while live payments are enabled."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:383
+msgid "The site is not served over HTTPS (acceptable only for local testing)."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:386
+msgid "The site uses HTTPS."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:404
+msgid "WP-Cron is disabled. Scheduled tasks (such as payment re-verification and WooCommerce's cancellation of unpaid orders) run only if a real cron job calls wp-cron.php; this check cannot see whether one exists."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:407
+msgid "PHP errors are displayed in responses (WP_DEBUG with WP_DEBUG_DISPLAY). A notice printed during a webhook or callback can corrupt the response."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:410
+msgid "Maintenance mode is active; webhooks and customer returns receive the maintenance page."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:415
+msgid "Some WordPress settings can interfere with payment callbacks."
+msgstr ""
+
+#: includes/checks/class-configuration-checks.php:423
+msgid "No WordPress settings that commonly break payment callbacks were found."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:42
+msgid "DNS resolution of api.paystack.co"
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:44
+msgid "The server can resolve Paystack's API hostname. No request is sent to Paystack."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:53
+msgid "API connectivity and authentication"
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:55
+msgid "Calls Paystack's read-only \"Fetch Timeout\" endpoint with the active secret key to confirm the server can reach Paystack and the key is accepted. No payment is created."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:78
+msgid "The server could not resolve api.paystack.co."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:80
+msgid "Without DNS resolution no API call can reach Paystack. PHP's resolver was used; cURL normally uses the same system resolver."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:85
+msgid "Ask your host to check the server's DNS configuration and outbound DNS access."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:92
+msgid "api.paystack.co resolves."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:123
+msgid "Paystack answered, but the response did not have the documented shape."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:125
+msgid "HTTP and the envelope looked successful, but data.payment_session_timeout was missing. Authentication is likely fine; the API response format may have changed."
+msgstr ""
+
+#. translators: %d: milliseconds
+#: includes/checks/class-connectivity-checks.php:133
+#, php-format
+msgid "Authentication succeeded but Paystack took %d ms to answer."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:135
+msgid "Slow responses risk checkout timeouts. One slow response can be a transient network issue; re-run to compare."
+msgstr ""
+
+#. translators: %s: test or live
+#: includes/checks/class-connectivity-checks.php:143
+#, php-format
+msgid "Paystack accepted the %s secret key."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:161
+msgid "Paystack rejected the secret key (HTTP 401 Unauthorized)."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:163
+msgid "The request reached Paystack and was refused. Possible causes: the key is wrong or was regenerated, it belongs to the other environment, or IP whitelisting is enabled and this server's IP is not listed. The response does not say which."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:166
+msgid "Compare the key hint in \"Secret key configured\" with the Paystack dashboard for the selected environment."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:167
+msgid "If IP whitelisting is enabled on your Paystack account, add this server's public IPv4 address."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:174
+msgid "Paystack refused the request (HTTP 403 Forbidden)."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:176
+msgid "The key was recognised but is not allowed to make this request, or the request was blocked (for example by IP restrictions)."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:178
+msgid "Check IP whitelisting and the key's permissions in the Paystack dashboard."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:184
+msgid "Paystack rate-limited the request (HTTP 429); authentication could not be confirmed."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:186
+msgid "Paystack limits requests per integration and environment. The x-ratelimit-reset value says when to retry."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:188
+msgid "Wait for the reset time and run the check again. Look for code that calls the API in a loop."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:194
+msgid "Paystack returned a server error; authentication could not be confirmed."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:196
+msgid "HTTP 5xx responses indicate a problem on Paystack's side, not with this site."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:198
+msgid "Run the check again later and check status.paystack.com."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:204
+msgid "The request to Paystack timed out."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:206
+msgid "No response arrived within the timeout. This can be a blocked outbound connection or a temporary network problem; re-run to see whether it repeats."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:208
+msgid "Re-run the check. If it keeps timing out, ask your host whether outbound HTTPS to api.paystack.co is allowed."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:214
+msgid "The server could not resolve Paystack's API hostname."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:217
+msgid "Ask your host to fix DNS resolution on the server."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:223
+msgid "A TLS/certificate error prevented a secure connection to Paystack."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:225
+msgid "Certificate verification must stay enabled; the fix is on the server (CA bundle, OpenSSL) or an intercepting proxy."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:227
+msgid "Ask your host to update the CA certificate bundle and OpenSSL."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:234
+msgid "The server could not connect to Paystack."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:237
+msgid "Ask your host whether outbound HTTPS connections to api.paystack.co are blocked by a firewall."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:242
+msgid "No secret key is configured."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:245
+msgid "Paystack's response could not be interpreted; authentication is unconfirmed."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:247
+msgid "The response was not the documented JSON envelope (for example an HTML error page from a proxy), or reported status=false. The cause is unknown from this evidence."
+msgstr ""
+
+#: includes/checks/class-connectivity-checks.php:249
+msgid "Re-run the check. If it persists, check for proxies between the server and the internet."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:34
+msgid "PHP version"
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:36
+msgid "PHP meets the minimum version of this plugin and of the Paystack gateway being diagnosed."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:45
+msgid "PHP extensions"
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:47
+msgid "Extensions needed for HTTPS API calls and webhook signature checks (openssl, json, hash with SHA-512, curl)."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:56
+msgid "HTTPS request support"
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:58
+msgid "The WordPress HTTP API has a transport that supports SSL, which every Paystack API call requires."
+msgstr ""
+
+#. translators: 1: running PHP version, 2: required version
+#: includes/checks/class-environment-checks.php:88
+#, php-format
+msgid "PHP %1$s is older than the required %2$s."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:91
+msgid "Ask your host to upgrade PHP."
+msgstr ""
+
+#. translators: %s: PHP version
+#: includes/checks/class-environment-checks.php:99
+#, php-format
+msgid "PHP %s meets the requirements."
+msgstr ""
+
+#. translators: %s: list of extensions
+#: includes/checks/class-environment-checks.php:134
+#, php-format
+msgid "Required PHP features are missing: %s."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:136
+msgid "HTTPS API calls need openssl; webhook signatures need HMAC-SHA512 from the hash extension."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:138
+msgid "Ask your host to enable the missing PHP extensions."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:146
+msgid "The curl extension is missing; WordPress will fall back to PHP streams for HTTPS."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:148
+msgid "Requests can still work, but timeouts and TLS errors are reported less precisely, and some hosts configure streams without proper CA certificates."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:150
+msgid "Ask your host to enable the PHP curl extension."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:156
+msgid "All required PHP extensions are available."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:168
+msgid "WordPress has no HTTP transport that supports HTTPS."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:170
+msgid "Paystack's API is only available over HTTPS, so no API call can succeed."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:171
+msgid "Enable the curl and openssl PHP extensions."
+msgstr ""
+
+#: includes/checks/class-environment-checks.php:176
+msgid "WordPress can make HTTPS requests."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:47
+msgid "Recent Paystack order outcomes"
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:47
+msgid "Counts this gateway's orders from the last 30 days by status to show whether payments are completing."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:48
+msgid "Orders stuck in pending payment"
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:48
+msgid "Pending orders older than 60 minutes may be unpaid, abandoned, or paid without the store being notified."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:49
+msgid "Paid orders have a transaction ID"
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:49
+msgid "Paid orders normally record Paystack's transaction ID; missing IDs suggest manual status changes or a verification step that did not run."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:78
+msgid "No orders used this gateway in the last 30 days, so there is no payment evidence to evaluate."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:79
+msgid "Place a test-mode order and verify it under Payment Diagnostics."
+msgstr ""
+
+#. translators: %d: count
+#: includes/checks/class-payment-flow-checks.php:103
+#, php-format
+msgid "None of the last %d orders using this gateway was paid."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:105
+msgid "Either customers are abandoning payment, or payments succeed at Paystack but are not confirmed on the store. These cannot be told apart without checking a reference."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:107
+msgid "Take a reference from the Paystack dashboard for one of these orders and verify it under Payment Diagnostics with the order ID."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:115
+msgid "More than half of recent orders using this gateway failed."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:117
+msgid "Failed orders usually mean declined payments, which are normal in small numbers. A high rate can also indicate a configuration problem; the reason is in each order's notes and the Paystack dashboard."
+msgstr ""
+
+#. translators: 1: paid, 2: total
+#: includes/checks/class-payment-flow-checks.php:126
+#, php-format
+msgid "%1$d of %2$d recent orders using this gateway were paid."
+msgstr ""
+
+#. translators: %d: count
+#: includes/checks/class-payment-flow-checks.php:165
+#, php-format
+msgid "%d orders have been pending payment for over an hour."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:167
+msgid "Most are usually abandoned checkouts. Some may have been paid without the store being notified (missing webhook, failed verification). The order data alone cannot tell which."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:169
+msgid "Search the Paystack dashboard for these orders. For any successful transaction, verify its reference with the order ID under Payment Diagnostics."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:175
+msgid "No orders using this gateway are stuck in pending payment."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:186
+msgid "No paid orders used this gateway in the last 30 days."
+msgstr ""
+
+#. translators: %d: count
+#: includes/checks/class-payment-flow-checks.php:203
+#, php-format
+msgid "%d paid orders have no transaction ID."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:205
+msgid "Gateways normally store the Paystack transaction ID when they verify a payment. Missing IDs suggest the status was changed manually, or the integration does not store IDs. Not necessarily an error."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:207
+msgid "Spot-check one of these orders against the Paystack dashboard."
+msgstr ""
+
+#: includes/checks/class-payment-flow-checks.php:212
+msgid "All recent paid orders have a transaction ID."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:54
+msgid "Webhook URL"
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:54
+msgid "The webhook URL to set in the Paystack dashboard can be generated and uses HTTPS."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:55
+msgid "Webhook handler registered"
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:55
+msgid "The integration's webhook handler is hooked into WordPress on this site."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:56
+msgid "Webhook endpoint responds (loopback)"
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:56
+msgid "Sends an unsigned, non-payment POST from this server to its own webhook URL and interprets the response."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:57
+msgid "Unsigned requests rejected"
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:57
+msgid "The handler rejects requests without a valid x-paystack-signature, where that is observable from outside."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:58
+msgid "Signed test event"
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:58
+msgid "Manual only: sends a correctly signed, non-payment test event to confirm the handler accepts the configured key. Cannot change orders."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:59
+msgid "Public reachability"
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:59
+msgid "Whether the webhook host could be reachable from the internet (not localhost or a private network)."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:60
+msgid "Webhook errors in local logs"
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:60
+msgid "Recent webhook-related warnings and errors in the WooCommerce logs this integration writes."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:94
+msgid "In Paystack Dashboard > Settings > API Keys & Webhooks, set this exact URL as the webhook URL for each environment you use (test and live are configured separately)."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:98
+msgid "The webhook URL generated for this integration is not a valid URL."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:108
+msgid "Webhook events confirm payments; they should only be delivered over HTTPS."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:110
+msgid "Enable HTTPS for the site, then use the https:// version of this URL."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:114
+msgid "The webhook URL uses HTTP while live mode is enabled."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:115
+msgid "The webhook URL uses HTTP."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:119
+msgid "Webhook URL generated."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:121
+msgid "The health checker cannot read your Paystack dashboard, so it cannot confirm this URL is the one configured there."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:141
+msgid "The integration's webhook handler is not registered."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:143
+msgid "Webhook requests to the URL would not reach any code. This usually means the gateway plugin failed to load or is too old."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:145
+msgid "Deactivate and reactivate the gateway plugin; update it; check \"Integration errors in WooCommerce logs\" for fatal errors."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:151
+msgid "The webhook handler is registered."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:181
+msgid "The webhook URL does not point to this site, so it was not requested."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:186
+msgid "This request was sent from the server to itself. A response shows the handler runs; it does not prove Paystack's servers can reach the URL (DNS, firewalls and CDNs can differ), and it does not prove a real event would be processed correctly."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:190
+msgid "The site could not send a request to its own webhook URL."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:192
+msgid "Many hosts block loopback requests, so this is not proof the endpoint is broken for Paystack."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:194
+msgid "Check the webhook delivery log in the Paystack dashboard for the real delivery status."
+msgstr ""
+
+#. translators: %d: HTTP status
+#: includes/checks/class-webhook-checks.php:204
+#, php-format
+msgid "The webhook URL redirects (HTTP %d)."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:206
+msgid "Webhook senders generally do not follow redirects for POST requests, so events may never reach the handler. Common causes: http-to-https or trailing-slash redirects."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:208
+msgid "Configure the final URL (see the redirect location) in the Paystack dashboard."
+msgstr ""
+
+#. translators: %d: HTTP status
+#: includes/checks/class-webhook-checks.php:216
+#, php-format
+msgid "The webhook URL returned HTTP %d: no handler answered."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:219
+msgid "WooCommerce returns 400 for wc-api requests when nothing is hooked to the endpoint."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:220
+msgid "The REST route was not found; permalinks or a security plugin may be blocking the REST API."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:222
+msgid "Check \"Webhook handler registered\" and whether the REST API is disabled by a plugin."
+msgstr ""
+
+#. translators: %d: HTTP status
+#: includes/checks/class-webhook-checks.php:230
+#, php-format
+msgid "The webhook handler returned a server error (HTTP %d)."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:232
+msgid "A non-payment request caused a server error, which suggests the handler (or code running before it) is failing. Paystack would keep retrying real events."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:234
+msgid "Check the PHP error log and \"Integration errors in WooCommerce logs\"."
+msgstr ""
+
+#. translators: %d: HTTP status
+#: includes/checks/class-webhook-checks.php:242
+#, php-format
+msgid "The request was blocked with HTTP %d before reaching the handler."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:244
+msgid "This integration's handler does not send 401/403 itself, so a security plugin, basic authentication or a firewall rule likely blocked the request. Paystack's deliveries may be blocked the same way."
+msgstr ""
+
+#. translators: %d: HTTP status
+#: includes/checks/class-webhook-checks.php:253
+#, php-format
+msgid "The webhook endpoint responded on this server (HTTP %d)."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:271
+msgid "Not observable for this integration."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:273
+msgid "This handler answers HTTP 200 with an empty body for both rejected and ignored requests, so enforcement cannot be seen from outside. Its source code (version 5.8.5) validates x-paystack-signature as HMAC-SHA512 of the raw body. Use \"Signed test event\" to confirm a correctly signed request is accepted."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:280
+msgid "The loopback request did not complete, so enforcement could not be observed."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:285
+msgid "The handler rejected an unsigned request (HTTP 401)."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:289
+msgid "The handler accepted a request without a signature."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:291
+msgid "Anyone could send fake events to this endpoint. Paystack signs every event with HMAC-SHA512 of the raw body using your secret key (x-paystack-signature header); handlers must verify it."
+msgstr ""
+
+#. translators: %d: HTTP status
+#: includes/checks/class-webhook-checks.php:299
+#, php-format
+msgid "The response (HTTP %d) does not show whether signatures are enforced."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:313
+msgid "The webhook URL does not point to this site, so no test event was sent."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:335
+msgid "The signed test event could not be delivered over loopback."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:337
+msgid "Many hosts block loopback requests; this does not prove Paystack cannot deliver events."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:347
+msgid "The handler accepted a correctly signed event and ignored it as a non-payment event."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:349
+msgid "Signature verification with the configured key works on this server and the raw request body reaches the handler intact. No order was changed."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:356
+msgid "The handler rejected an event signed with the configured secret key."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:358
+msgid "The handler verifies signatures with a different key than the one the health checker reads (for example a key defined in wp-config.php), or something on the server modifies request bodies. Real Paystack events would be rejected the same way."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:360
+msgid "Make sure only one secret key is configured for this environment and that no plugin or proxy rewrites webhook bodies."
+msgstr ""
+
+#. translators: %d: HTTP status
+#: includes/checks/class-webhook-checks.php:368
+#, php-format
+msgid "Unexpected response to the signed test event (HTTP %d)."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:370
+msgid "The cause is unknown from this evidence."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:372
+msgid "Run \"Webhook endpoint responds\" and check the PHP error log."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:390
+msgid "The webhook host is local or private, so Paystack cannot reach it."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:392
+msgid "The host is localhost, a private-network address or a reserved local domain. Paystack's servers deliver webhooks over the public internet."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:394
+msgid "For local testing, expose the site through a tunnel with a public HTTPS URL and set that URL in the Paystack dashboard."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:401
+msgid "The webhook host could not be resolved from this server."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:410
+msgid "The host is public, but external reachability cannot be verified from inside the server."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:412
+msgid "Verifying it would require asking a third-party service to call the site, which this plugin deliberately does not do. Paystack's dashboard shows the result of each real delivery attempt."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:414
+msgid "Check the webhook delivery log in the Paystack dashboard."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:429
+#: includes/checks/class-woocommerce-checks.php:436
+msgid "WooCommerce logs are not available through a supported handler."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:436
+msgid "This integration does not write logs the health checker knows how to read."
+msgstr ""
+
+#. translators: 1: errors, 2: warnings
+#: includes/checks/class-webhook-checks.php:453
+#, php-format
+msgid "Found %1$d webhook-related errors and %2$d warnings in the last 7 days."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:455
+msgid "Log entries show something went wrong but not necessarily what caused it. Read the excerpts: signature failures point to key mismatches; unknown references can be other integrations on the same Paystack account."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:463
+msgid "No webhook-related errors or warnings were logged in the last 7 days."
+msgstr ""
+
+#: includes/checks/class-webhook-checks.php:465
+msgid "This integration does not write to the WooCommerce log, so only fatal errors could be checked."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:52
+msgid "WooCommerce status"
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:52
+msgid "Whether WooCommerce is installed and active, and its version."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:53
+msgid "WooCommerce version supported by the gateway"
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:53
+msgid "The installed WooCommerce version is within the range the Paystack gateway declares (WC requires at least / WC tested up to)."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:54
+msgid "Gateway enabled and available"
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:54
+msgid "The Paystack gateway is enabled and WooCommerce considers it available at checkout."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:55
+msgid "Store currency supported"
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:55
+msgid "The store currency is accepted by the gateway and listed in Paystack's API documentation."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:56
+msgid "Checkout configuration"
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:56
+msgid "Cart and checkout pages exist, are published and contain checkout content."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:57
+msgid "HPOS compatibility of the gateway"
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:57
+msgid "Whether the gateway declared compatibility with High-Performance Order Storage, as recorded by WooCommerce."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:58
+msgid "Checkout Blocks support of the gateway"
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:58
+msgid "Whether the checkout uses the Checkout block and, if so, whether the gateway registered a block integration."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:59
+msgid "Health checker's own compatibility"
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:59
+msgid "This plugin's own HPOS/Blocks declarations (separate from the gateway's)."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:60
+msgid "Integration errors in WooCommerce logs"
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:60
+msgid "Errors from the gateway's log source and fatal errors mentioning the gateway in the last 7 days."
+msgstr ""
+
+#. translators: %s: version
+#: includes/checks/class-woocommerce-checks.php:89
+#, php-format
+msgid "WooCommerce %s is active."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:102
+msgid "WooCommerce is installed but not active."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:104
+msgid "WooCommerce payment checks are skipped. If you take payments through WooCommerce, activate it."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:105
+msgid "Activate WooCommerce on the Plugins screen if you use it."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:111
+msgid "WooCommerce is not installed; WooCommerce checks do not apply."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:112
+msgid "General Paystack checks (configuration, API, environment) still run using the keys entered in the health checker."
+msgstr ""
+
+#. translators: 1: installed, 2: required
+#: includes/checks/class-woocommerce-checks.php:138
+#, php-format
+msgid "WooCommerce %1$s is older than the %2$s the gateway requires."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:141
+msgid "Update WooCommerce (after taking a backup)."
+msgstr ""
+
+#. translators: 1: installed, 2: tested
+#: includes/checks/class-woocommerce-checks.php:150
+#, php-format
+msgid "WooCommerce %1$s is newer than the version the gateway was tested with (%2$s)."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:152
+msgid "This often works, but it is not confirmed by the gateway's author. Watch for checkout or order-status problems and update the gateway when a new version is available."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:159
+msgid "The WooCommerce version is within the gateway's declared range."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:181
+msgid "The gateway is not registered with WooCommerce."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:191
+msgid "The Paystack gateway is disabled, so customers cannot choose it."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:193
+msgid "This may be intentional (for example while testing)."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:195
+msgid "Enable it in WooCommerce > Settings > Payments when you are ready."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:204
+msgid "The gateway is enabled but WooCommerce hides it at checkout."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:206
+msgid "The gateway's own availability rules failed. Common reasons: unsupported store currency or missing keys. See the currency and configuration checks."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:213
+msgid "The gateway is enabled and available at checkout."
+msgstr ""
+
+#. translators: %s: currency
+#: includes/checks/class-woocommerce-checks.php:234
+#, php-format
+msgid "The gateway does not accept the store currency (%s)."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:236
+msgid "The gateway hides itself at checkout for currencies it does not support."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:238
+msgid "Change the store currency in WooCommerce > Settings > General, if your Paystack account supports the new currency."
+msgstr ""
+
+#. translators: %s: currency
+#: includes/checks/class-woocommerce-checks.php:246
+#, php-format
+msgid "%s is accepted by the gateway but not listed in Paystack's API currency table."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:248
+msgid "Availability can depend on your Paystack account and country. This is not confirmed by the documentation the checker relies on."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:250
+msgid "Confirm with Paystack that this currency is enabled for your account, or run a test-mode payment in it."
+msgstr ""
+
+#. translators: %s: currency
+#: includes/checks/class-woocommerce-checks.php:257
+#, php-format
+msgid "%s is supported."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:259
+msgid "Your Paystack account must also have the currency enabled; that cannot be checked from here."
+msgstr ""
+
+#. translators: %s: page name
+#: includes/checks/class-woocommerce-checks.php:280
+#, php-format
+msgid "No %s page is set."
+msgstr ""
+
+#. translators: %s: page name
+#: includes/checks/class-woocommerce-checks.php:288
+#, php-format
+msgid "The %s page is not published."
+msgstr ""
+
+#. translators: %s: page name
+#: includes/checks/class-woocommerce-checks.php:292
+#, php-format
+msgid "The %s page contains neither the block nor the shortcode."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:298
+msgid "Checkout configuration is incomplete."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:301
+msgid "Fix the pages under WooCommerce > Settings > Advanced > Page setup."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:306
+msgid "Cart and checkout pages are set up."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:318
+msgid "WooCommerce's feature compatibility data is not available."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:328
+msgid "The gateway declares HPOS compatibility."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:333
+msgid "The gateway explicitly declared itself incompatible with HPOS."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:334
+msgid "The gateway has not declared HPOS compatibility; WooCommerce treats undeclared plugins as incompatible."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:336
+msgid "Update the gateway. Until it declares compatibility, keep HPOS disabled (or in compatibility mode)."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:341
+msgid "HPOS is enabled but the gateway is not declared compatible."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:342
+msgid "The gateway is not declared HPOS-compatible (HPOS is currently off)."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:364
+msgid "WooCommerce Blocks' payment registry is not available."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:369
+msgid "The checkout uses the Checkout block, but the gateway has no block integration."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:371
+msgid "Customers will not see this payment method in the Checkout block."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:373
+msgid "Update the gateway, or switch the checkout page to the classic [woocommerce_checkout] shortcode."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:381
+msgid "The gateway registers a Checkout block integration but does not declare cart_checkout_blocks compatibility."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:383
+msgid "The payment method should appear in the Checkout block, but WooCommerce may list the plugin as incompatible in the editor because the declaration is missing. Confirm with a test-mode payment through the Checkout block."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:392
+msgid "The checkout uses the Checkout block and the gateway supports it."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:393
+msgid "The checkout uses the classic shortcode, so Checkout block support is not required."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:416
+msgid "The health checker is declared compatible with HPOS and Checkout Blocks."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:419
+msgid "WooCommerce did not record the health checker's compatibility declarations."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:421
+msgid "This affects only how WooCommerce lists this plugin, not the diagnostics. It happens when the plugin is loaded from outside wp-content/plugins."
+msgstr ""
+
+#. translators: %d: count
+#: includes/checks/class-woocommerce-checks.php:455
+#, php-format
+msgid "%d integration errors were logged in the last 7 days."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:457
+msgid "The excerpts show what was logged; they do not by themselves identify the root cause."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:459
+msgid "Open WooCommerce > Status > Logs for the full entries."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:466
+msgid "No integration errors were logged in the last 7 days."
+msgstr ""
+
+#: includes/checks/class-woocommerce-checks.php:468
+msgid "The gateway does not write to the WooCommerce log; only fatal errors mentioning it were checked."
+msgstr ""
+
+#: includes/class-diagnostic-context.php:166
+msgid "WooCommerce is not active, so this WooCommerce check does not apply."
+msgstr ""
+
+#: includes/class-diagnostic-context.php:169
+msgid "No Paystack integration was found to diagnose. Activate a supported Paystack gateway or enter keys under Configuration."
+msgstr ""
+
+#: includes/class-diagnostic-context.php:174
+msgid "No Paystack integration was found to diagnose."
+msgstr ""
+
+#: includes/class-diagnostic-context.php:176
+msgid "No secret key is configured for the active environment, so this check cannot run."
+msgstr ""
+
+#: includes/class-diagnostic-context.php:181
+msgid "WooCommerce is not active."
+msgstr ""
+
+#: includes/class-diagnostic-context.php:183
+msgid "The integration being diagnosed is not a WooCommerce gateway."
+msgstr ""
+
+#: includes/class-diagnostic-context.php:187
+msgid "The webhook endpoint of this integration is not known to the health checker (for example, a custom integration)."
+msgstr ""
+
+#: includes/class-diagnostic-manager.php:125
+msgid "A prerequisite for this check is missing, so it was not run. Skipped checks do not affect the health score."
+msgstr ""
+
+#: includes/class-diagnostic-manager.php:131
+msgid "The check did not return a valid result."
+msgstr ""
+
+#: includes/class-diagnostic-manager.php:135
+msgid "The check could not be completed because of an internal error."
+msgstr ""
+
+#: includes/class-diagnostic-manager.php:137
+msgid "The error was contained so other checks could run. It is not counted as a pass or a failure."
+msgstr ""
+
+#: includes/class-health-summary.php:143
+msgid "Problems found"
+msgstr ""
+
+#: includes/class-health-summary.php:145
+msgid "Needs attention"
+msgstr ""
+
+#: includes/class-health-summary.php:147
+msgid "Healthy"
+msgstr ""
+
+#: includes/class-health-summary.php:149
+msgid "Unknown (not enough evidence)"
+msgstr ""
+
+#: includes/class-reference-verifier.php:78
+msgid "Transaction reference verification"
+msgstr ""
+
+#: includes/class-reference-verifier.php:94
+msgid "The reference contains characters Paystack does not allow (only letters, digits, \"-\", \".\" and \"=\")."
+msgstr ""
+
+#. translators: %s: test or live
+#: includes/class-reference-verifier.php:116
+#, php-format
+msgid "Paystack did not find this reference in the %s environment."
+msgstr ""
+
+#: includes/class-reference-verifier.php:118
+msgid "The reference may be mistyped, belong to the other environment, or never have been initialized."
+msgstr ""
+
+#: includes/class-reference-verifier.php:120
+msgid "Copy the reference exactly from the Paystack dashboard, in the same mode as the store."
+msgstr ""
+
+#: includes/class-reference-verifier.php:134
+msgid "Paystack's answer did not contain the expected reference."
+msgstr ""
+
+#: includes/class-reference-verifier.php:136
+msgid "The response cannot be trusted for this reference; the cause is unknown."
+msgstr ""
+
+#. translators: %d: order ID
+#: includes/class-reference-verifier.php:146
+#, php-format
+msgid "The transaction was verified, but order #%d was not found."
+msgstr ""
+
+#. translators: 1: transaction environment, 2: store environment
+#: includes/class-reference-verifier.php:154
+#, php-format
+msgid "The transaction belongs to the %1$s environment but the store is in %2$s mode."
+msgstr ""
+
+#: includes/class-reference-verifier.php:173
+msgid "Enter the order ID to compare the transaction with the WooCommerce order."
+msgstr ""
+
+#: includes/class-reference-verifier.php:186
+msgid "Paystack confirms this transaction was successful."
+msgstr ""
+
+#. translators: %s: Paystack status
+#: includes/class-reference-verifier.php:195
+#, php-format
+msgid "Paystack reports this transaction as \"%s\"."
+msgstr ""
+
+#: includes/class-reference-verifier.php:197
+msgid "Only \"success\" means the customer was charged. abandoned/ongoing/pending/processing/queued are not final; failed and reversed mean no money was kept."
+msgstr ""
+
+#. translators: %s: payment method ID
+#: includes/class-reference-verifier.php:239
+#, php-format
+msgid "The order was placed with payment method \"%s\", not the gateway being diagnosed."
+msgstr ""
+
+#: includes/class-reference-verifier.php:242
+msgid "The order records a different reference; this transaction may be an earlier or a separate attempt."
+msgstr ""
+
+#. translators: 1: transaction currency, 2: order currency
+#: includes/class-reference-verifier.php:250
+#, php-format
+msgid "Currency mismatch: Paystack %1$s, order %2$s."
+msgstr ""
+
+#. translators: 1: charged subunits, 2: expected subunits
+#: includes/class-reference-verifier.php:253
+#, php-format
+msgid "Amount mismatch: Paystack charged %1$d subunits, the order total is %2$d subunits."
+msgstr ""
+
+#: includes/class-reference-verifier.php:257
+msgid "Paystack confirms the payment, but the order is not marked as paid."
+msgstr ""
+
+#: includes/class-reference-verifier.php:259
+msgid "The payment succeeded at Paystack but did not reach the order. The webhook or the customer return was not received or not processed. This tool does not change the order."
+msgstr ""
+
+#: includes/class-reference-verifier.php:264
+msgid "Use the gateway's own re-verification feature, or mark the order paid manually after confirming in the Paystack dashboard."
+msgstr ""
+
+#: includes/class-reference-verifier.php:265
+msgid "Then run the webhook checks to find out why the notification was not processed."
+msgstr ""
+
+#. translators: %s: Paystack status
+#: includes/class-reference-verifier.php:275
+#, php-format
+msgid "The order is marked paid, but this transaction is \"%s\"."
+msgstr ""
+
+#: includes/class-reference-verifier.php:282
+msgid "The transaction does not match the order."
+msgstr ""
+
+#: includes/class-reference-verifier.php:285
+msgid "Do not fulfil the order until the difference is understood."
+msgstr ""
+
+#. translators: %s: Paystack status
+#: includes/class-reference-verifier.php:294
+#, php-format
+msgid "Paystack status \"%s\"; the order and transaction need a closer look."
+msgstr ""
+
+#: includes/class-reference-verifier.php:297
+msgid "Wait for the transaction to finish, or ask the customer to pay again if it was abandoned or failed."
+msgstr ""
+
+#: includes/class-reference-verifier.php:304
+msgid "Paystack confirms the payment and it matches the paid order (amount, currency, status)."
+msgstr ""
+
+#: includes/class-settings.php:187
+msgid "A key contained unexpected characters and was not saved."
+msgstr ""
+
+#: includes/class-troubleshooting.php:29
+msgid "Missing or invalid credentials"
+msgstr ""
+
+#: includes/class-troubleshooting.php:30
+msgid "Checkout shows a generic payment error; the API check reports 401; no Paystack page opens."
+msgstr ""
+
+#: includes/class-troubleshooting.php:32
+msgid "No secret key saved for the active environment."
+msgstr ""
+
+#: includes/class-troubleshooting.php:33
+msgid "A key was copied with missing characters or extra spaces."
+msgstr ""
+
+#: includes/class-troubleshooting.php:34
+msgid "The key was rolled (regenerated) in the Paystack dashboard and the old key is still saved."
+msgstr ""
+
+#: includes/class-troubleshooting.php:37
+msgid "Run \"Secret key configured\" and \"API authentication\"."
+msgstr ""
+
+#: includes/class-troubleshooting.php:38
+msgid "Compare the last four characters shown by the checker with the key in Paystack Dashboard > Settings > API Keys & Webhooks."
+msgstr ""
+
+#: includes/class-troubleshooting.php:40
+msgid "Paste the current secret key for the active environment into the gateway settings and run the checks again."
+msgstr ""
+
+#: includes/class-troubleshooting.php:43
+msgid "Key has an unexpected format"
+msgstr ""
+
+#: includes/class-troubleshooting.php:44
+msgid "The format check warns that a key does not start with sk_test_/sk_live_ (or pk_test_/pk_live_)."
+msgstr ""
+
+#: includes/class-troubleshooting.php:46
+msgid "A public key was pasted into a secret-key field, or the other way round."
+msgstr ""
+
+#: includes/class-troubleshooting.php:47
+msgid "A key from another provider was pasted."
+msgstr ""
+
+#: includes/class-troubleshooting.php:49
+msgid "The format check is local and cannot prove a key is invalid; the API authentication check is the authoritative test."
+msgstr ""
+
+#: includes/class-troubleshooting.php:50
+msgid "Copy the key again from Paystack Dashboard > Settings > API Keys & Webhooks."
+msgstr ""
+
+#: includes/class-troubleshooting.php:53
+msgid "Test/live environment mismatch"
+msgstr ""
+
+#: includes/class-troubleshooting.php:54
+msgid "Payments appear in the wrong Paystack dashboard mode, webhooks fail signature checks, or verification says the transaction is not found."
+msgstr ""
+
+#: includes/class-troubleshooting.php:56
+msgid "Test mode is enabled but live keys were saved in the test fields (or the reverse)."
+msgstr ""
+
+#: includes/class-troubleshooting.php:57
+msgid "The webhook URL is configured for one environment only in the Paystack dashboard."
+msgstr ""
+
+#: includes/class-troubleshooting.php:59
+msgid "Run \"Environment matches credentials\" and compare with the transaction's \"domain\" in Payment Diagnostics."
+msgstr ""
+
+#: includes/class-troubleshooting.php:60
+msgid "Use sk_test_/pk_test_ keys with test mode and sk_live_/pk_live_ keys with live mode, and set the webhook URL for each environment."
+msgstr ""
+
+#: includes/class-troubleshooting.php:63
+msgid "API connection timeouts"
+msgstr ""
+
+#: includes/class-troubleshooting.php:64
+msgid "Checkout hangs then errors; API checks report a timeout."
+msgstr ""
+
+#: includes/class-troubleshooting.php:66
+msgid "Outbound HTTPS from the server is blocked or slowed by a firewall or proxy."
+msgstr ""
+
+#: includes/class-troubleshooting.php:67
+msgid "Temporary network congestion or a Paystack incident."
+msgstr ""
+
+#: includes/class-troubleshooting.php:69
+msgid "Re-run \"API authentication\" a few times and compare elapsed times; ask your host whether outbound connections to api.paystack.co on port 443 are allowed."
+msgstr ""
+
+#: includes/class-troubleshooting.php:70
+msgid "Ask the host to allow outbound HTTPS to api.paystack.co. If the problem is intermittent, check status.paystack.com."
+msgstr ""
+
+#: includes/class-troubleshooting.php:73
+msgid "DNS resolution failure"
+msgstr ""
+
+#: includes/class-troubleshooting.php:74
+msgid "API checks report \"could not resolve host\"."
+msgstr ""
+
+#: includes/class-troubleshooting.php:75
+msgid "The server's DNS resolver is misconfigured or outbound DNS is blocked."
+msgstr ""
+
+#: includes/class-troubleshooting.php:76
+msgid "Run \"DNS resolution of api.paystack.co\"."
+msgstr ""
+
+#: includes/class-troubleshooting.php:77
+msgid "Ask the hosting provider to fix DNS resolution on the server."
+msgstr ""
+
+#: includes/class-troubleshooting.php:80
+msgid "TLS or certificate errors"
+msgstr ""
+
+#: includes/class-troubleshooting.php:81
+msgid "API checks report SSL/TLS or certificate errors."
+msgstr ""
+
+#: includes/class-troubleshooting.php:83
+msgid "Outdated CA certificate bundle or OpenSSL on the server."
+msgstr ""
+
+#: includes/class-troubleshooting.php:84
+msgid "A proxy intercepting HTTPS traffic."
+msgstr ""
+
+#: includes/class-troubleshooting.php:86
+msgid "Check \"PHP extensions\" and the TLS detail in the API check evidence."
+msgstr ""
+
+#: includes/class-troubleshooting.php:87
+msgid "Update the server's CA bundle and OpenSSL. Never disable certificate verification; Paystack requires it."
+msgstr ""
+
+#: includes/class-troubleshooting.php:90
+msgid "HTTP 401 or 403 from Paystack"
+msgstr ""
+
+#: includes/class-troubleshooting.php:91
+msgid "API authentication fails with 401 Unauthorized or 403 Forbidden."
+msgstr ""
+
+#: includes/class-troubleshooting.php:93
+msgid "401: the secret key is wrong, revoked or belongs to the other environment."
+msgstr ""
+
+#: includes/class-troubleshooting.php:94
+msgid "IP whitelisting is enabled on the Paystack account and this server's public IP is not on the list."
+msgstr ""
+
+#: includes/class-troubleshooting.php:95
+msgid "403: the key is not permitted to perform the request."
+msgstr ""
+
+#: includes/class-troubleshooting.php:97
+msgid "Check whether IP whitelisting is enabled in the Paystack dashboard and compare with your server's outbound IP (ask your host)."
+msgstr ""
+
+#: includes/class-troubleshooting.php:98
+msgid "Use the current key for the active environment, or add the server's public IPv4 address to the whitelist."
+msgstr ""
+
+#: includes/class-troubleshooting.php:101
+msgid "Rate limiting (HTTP 429)"
+msgstr ""
+
+#: includes/class-troubleshooting.php:102
+msgid "Requests fail with 429 \"Rate limit exceeded\"."
+msgstr ""
+
+#: includes/class-troubleshooting.php:103
+msgid "Too many requests in the rate-limit window. Paystack documents a default of 600 requests/60 s in live mode and 100 requests/60 s in test mode, per integration."
+msgstr ""
+
+#: includes/class-troubleshooting.php:104
+msgid "The x-ratelimit-reset header in the evidence says when the window ends."
+msgstr ""
+
+#: includes/class-troubleshooting.php:105
+msgid "Wait for the reset time. Look for plugins or scripts polling the API in a loop."
+msgstr ""
+
+#: includes/class-troubleshooting.php:108
+msgid "Paystack server errors (5xx)"
+msgstr ""
+
+#: includes/class-troubleshooting.php:109
+msgid "API checks report HTTP 500-599."
+msgstr ""
+
+#: includes/class-troubleshooting.php:110
+msgid "A problem on Paystack's side."
+msgstr ""
+
+#: includes/class-troubleshooting.php:111
+msgid "Re-run later and check status.paystack.com."
+msgstr ""
+
+#: includes/class-troubleshooting.php:112
+msgid "Nothing to change on the site; report persistent errors to Paystack support."
+msgstr ""
+
+#: includes/class-troubleshooting.php:115
+msgid "Incorrect transaction reference"
+msgstr ""
+
+#: includes/class-troubleshooting.php:116
+msgid "Verification says the transaction was not found."
+msgstr ""
+
+#: includes/class-troubleshooting.php:118
+msgid "The reference was mistyped or copied from the other environment."
+msgstr ""
+
+#: includes/class-troubleshooting.php:119
+msgid "The transaction was never initialized with that reference."
+msgstr ""
+
+#: includes/class-troubleshooting.php:121
+msgid "Search the reference in the Paystack dashboard in both test and live mode."
+msgstr ""
+
+#: includes/class-troubleshooting.php:122
+msgid "Use the exact reference shown in the Paystack dashboard or the order notes."
+msgstr ""
+
+#: includes/class-troubleshooting.php:125
+msgid "Amount or currency mismatch"
+msgstr ""
+
+#: includes/class-troubleshooting.php:126
+msgid "A successful Paystack transaction does not match the order total or currency."
+msgstr ""
+
+#: includes/class-troubleshooting.php:128
+msgid "The order total changed after the transaction was initialized."
+msgstr ""
+
+#: includes/class-troubleshooting.php:129
+msgid "Paystack amounts are in subunits (x100); a conversion bug in the integration."
+msgstr ""
+
+#: includes/class-troubleshooting.php:130
+msgid "The customer bore Paystack fees, so the charged amount is higher than the order total."
+msgstr ""
+
+#: includes/class-troubleshooting.php:132
+msgid "Compare the amounts shown by Payment Diagnostics; check whether requested_amount equals the order total."
+msgstr ""
+
+#: includes/class-troubleshooting.php:133
+msgid "Do not fulfil until the difference is understood; refund or collect the difference as appropriate."
+msgstr ""
+
+#: includes/class-troubleshooting.php:136
+msgid "Payment verification failures"
+msgstr ""
+
+#: includes/class-troubleshooting.php:137
+msgid "The customer was charged but the store did not confirm the payment."
+msgstr ""
+
+#: includes/class-troubleshooting.php:139
+msgid "The callback or webhook could not reach Paystack's Verify API (see API checks)."
+msgstr ""
+
+#: includes/class-troubleshooting.php:140
+msgid "The integration rejected the transaction because of a mismatch."
+msgstr ""
+
+#: includes/class-troubleshooting.php:142
+msgid "Verify the reference in Payment Diagnostics and compare it with the order."
+msgstr ""
+
+#: includes/class-troubleshooting.php:143
+msgid "Fix the connectivity or configuration problem, then use the gateway's own re-verification feature if it has one."
+msgstr ""
+
+#: includes/class-troubleshooting.php:146
+msgid "Missing webhook events"
+msgstr ""
+
+#: includes/class-troubleshooting.php:147
+msgid "Orders stay pending when customers close the browser before returning to the store."
+msgstr ""
+
+#: includes/class-troubleshooting.php:149
+msgid "The webhook URL is not set, or set to a different URL, in the Paystack dashboard."
+msgstr ""
+
+#: includes/class-troubleshooting.php:150
+msgid "The site is not publicly reachable (localhost, private network, maintenance mode, basic auth)."
+msgstr ""
+
+#: includes/class-troubleshooting.php:151
+msgid "A firewall, security plugin or CDN blocks POST requests from Paystack."
+msgstr ""
+
+#: includes/class-troubleshooting.php:153
+msgid "Compare the expected URL from \"Webhook URL\" with the dashboard; check delivery attempts in the Paystack dashboard's webhook logs."
+msgstr ""
+
+#: includes/class-troubleshooting.php:154
+msgid "Set the exact URL for each environment and allow POST requests to it from Paystack's documented IP addresses."
+msgstr ""
+
+#: includes/class-troubleshooting.php:157
+msgid "Invalid webhook signatures"
+msgstr ""
+
+#: includes/class-troubleshooting.php:158
+msgid "The integration rejects Paystack's webhooks (for example HTTP 401) or silently ignores them."
+msgstr ""
+
+#: includes/class-troubleshooting.php:160
+msgid "The store verifies with a different secret key than the one Paystack signs with (test/live mix-up or rotated key)."
+msgstr ""
+
+#: includes/class-troubleshooting.php:161
+msgid "A proxy or plugin modifies the request body before the integration reads it; the signature covers the exact raw body."
+msgstr ""
+
+#: includes/class-troubleshooting.php:163
+msgid "Use \"Signed test event\" to confirm the handler accepts a correctly signed request with the configured key."
+msgstr ""
+
+#: includes/class-troubleshooting.php:164
+msgid "Make sure the secret key for the environment Paystack is sending from is saved, and that nothing rewrites webhook request bodies."
+msgstr ""
+
+#: includes/class-troubleshooting.php:167
+msgid "Duplicate webhook processing"
+msgstr ""
+
+#: includes/class-troubleshooting.php:168
+msgid "Duplicate order notes, double stock reduction or repeated e-mails for one payment."
+msgstr ""
+
+#: includes/class-troubleshooting.php:170
+msgid "Paystack retries events that do not receive HTTP 200 (every 3 minutes for the first 4 tries, then hourly for 72 hours in live mode)."
+msgstr ""
+
+#: includes/class-troubleshooting.php:171
+msgid "The integration does not process events idempotently."
+msgstr ""
+
+#: includes/class-troubleshooting.php:173
+msgid "Check order notes for repeated payment notes and the gateway log for repeated deliveries of one reference."
+msgstr ""
+
+#: includes/class-troubleshooting.php:174
+msgid "Return HTTP 200 quickly and use an integration that ignores repeated events for already-paid orders."
+msgstr ""
+
+#: includes/class-troubleshooting.php:177
+msgid "WooCommerce order status not updating"
+msgstr ""
+
+#: includes/class-troubleshooting.php:178
+msgid "Paystack shows a successful payment but the order is still pending."
+msgstr ""
+
+#: includes/class-troubleshooting.php:180
+msgid "Neither the customer return nor the webhook reached the store."
+msgstr ""
+
+#: includes/class-troubleshooting.php:181
+msgid "Verification failed (connectivity, key, mismatch)."
+msgstr ""
+
+#: includes/class-troubleshooting.php:182
+msgid "A fatal error in the gateway or another plugin during processing."
+msgstr ""
+
+#: includes/class-troubleshooting.php:184
+msgid "Verify the reference in Payment Diagnostics with the order ID, then check \"Integration errors in WooCommerce logs\"."
+msgstr ""
+
+#: includes/class-troubleshooting.php:185
+msgid "Fix the cause found; then use the gateway's re-verification feature or update the order manually after confirming the payment in Paystack."
+msgstr ""
+
+#: includes/class-troubleshooting.php:188
+msgid "Plugin conflicts"
+msgstr ""
+
+#: includes/class-troubleshooting.php:189
+msgid "Two Paystack gateways are active, or fatal errors mention another plugin."
+msgstr ""
+
+#: includes/class-troubleshooting.php:190
+msgid "Paystack sends each environment's webhooks to one URL only, so with two Paystack gateways only one of them receives webhooks."
+msgstr ""
+
+#: includes/class-troubleshooting.php:191
+msgid "Run \"Paystack integration detected\" to list active Paystack gateways."
+msgstr ""
+
+#: includes/class-troubleshooting.php:192
+msgid "Keep one Paystack gateway enabled, or make sure the webhook URL points to the one that processes orders."
+msgstr ""
+
+#: includes/class-troubleshooting.php:195
+msgid "Unsupported WooCommerce features"
+msgstr ""
+
+#: includes/class-troubleshooting.php:196
+msgid "The payment method is missing from the Checkout block, or WooCommerce shows an incompatibility notice for HPOS."
+msgstr ""
+
+#: includes/class-troubleshooting.php:198
+msgid "The gateway does not register a Checkout block integration."
+msgstr ""
+
+#: includes/class-troubleshooting.php:199
+msgid "The gateway has not declared compatibility with High-Performance Order Storage."
+msgstr ""
+
+#: includes/class-troubleshooting.php:201
+msgid "Run \"Checkout Blocks support\" and \"HPOS compatibility\"."
+msgstr ""
+
+#: includes/class-troubleshooting.php:202
+msgid "Update the gateway; if it still lacks support, use the classic checkout (shortcode) or keep legacy order storage until it is supported."
+msgstr ""
+
+#: includes/class-troubleshooting.php:205
+msgid "Missing PHP extensions or incompatible PHP version"
+msgstr ""
+
+#: includes/class-troubleshooting.php:206
+msgid "Fatal errors, or HTTPS requests that cannot be made."
+msgstr ""
+
+#: includes/class-troubleshooting.php:207
+msgid "PHP is older than required, or curl/openssl/json/hash are missing."
+msgstr ""
+
+#: includes/class-troubleshooting.php:208
+msgid "Run the Environment checks."
+msgstr ""
+
+#: includes/class-troubleshooting.php:209
+msgid "Ask the host to upgrade PHP and enable the missing extensions."
+msgstr ""
+
+#: includes/class-troubleshooting.php:212
+msgid "Site not publicly reachable"
+msgstr ""
+
+#: includes/class-troubleshooting.php:213
+msgid "Webhooks never arrive on a development or staging site."
+msgstr ""
+
+#: includes/class-troubleshooting.php:214
+msgid "The site runs on localhost or a private network that Paystack cannot reach."
+msgstr ""
+
+#: includes/class-troubleshooting.php:215
+msgid "Run \"Public reachability\"."
+msgstr ""
+
+#: includes/class-troubleshooting.php:216
+msgid "Use a public HTTPS URL (for example a tunnelling service) for webhook testing, and set it in the Paystack dashboard."
+msgstr ""
+
+#: includes/integrations/class-manual-adapter.php:53
+msgid "Manual configuration (keys entered in the health checker)"
+msgstr ""
+
+#: includes/integrations/class-official-gateway-adapter.php:52
+msgid "Paystack WooCommerce Payment Gateway (official plugin)"
+msgstr ""
+
+#: includes/integrations/class-pwcg-adapter.php:39
+msgid "Gateway for Paystack on WooCommerce"
+msgstr ""
