@@ -1,0 +1,27 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Local WordPress/WooCommerce test environment (downloaded by bin/install-test-env.php)
+/.wp-test/
+
+# Build output
+/dist/
+
+# Local environment and credentials - never commit keys
+.env
+.env.*
+*.local.php
+wp-tests-config.php
+auth.json
+
+# Tooling caches
+.phpunit.result.cache
+.phpcs-cache
+/coverage/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

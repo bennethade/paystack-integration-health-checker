@@ -1,0 +1,42 @@
+{
+	"name": "bnyekefamo/paystack-integration-health-checker",
+	"description": "WordPress plugin that diagnoses Paystack payment integrations: configuration, API connectivity, webhooks, WooCommerce compatibility and payment flow.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=7.4"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpunit/phpunit": "^9.6",
+		"woocommerce/woocommerce-sniffs": "^1.0 || ^2.0",
+		"wp-coding-standards/wpcs": "^3.1",
+		"wp-phpunit/wp-phpunit": "^7.1",
+		"yoast/phpunit-polyfills": "^2.0"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"platform-check": false,
+		"sort-packages": true
+	},
+	"scripts": {
+		"test:env": "@php bin/install-test-env.php",
+		"test:unit": "phpunit -c phpunit-unit.xml.dist",
+		"test:integration": "phpunit --testsuite integration",
+		"test:no-woocommerce": [
+			"@putenv PIHC_TESTS_WOOCOMMERCE=0",
+			"phpunit --group no-woocommerce"
+		],
+		"test": [
+			"@test:unit",
+			"@test:integration",
+			"@test:no-woocommerce"
+		],
+		"lint": "phpcs",
+		"syntax": "@php bin/lint-syntax.php",
+		"build": "@php bin/build-zip.php"
+	}
+}
