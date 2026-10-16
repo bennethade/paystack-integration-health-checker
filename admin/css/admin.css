@@ -1,0 +1,198 @@
+/* Paystack Integration Health Checker - scoped to .pihc */
+
+.pihc .pihc-intro,
+.pihc .pihc-tab-intro {
+	max-width: 900px;
+	color: #3c434a;
+}
+
+.pihc .pihc-tab {
+	margin-top: 16px;
+}
+
+/* Status badges: text + icon, colour is supplementary. */
+.pihc-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 2px 8px;
+	border-radius: 3px;
+	border: 1px solid currentColor;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.6;
+	white-space: nowrap;
+}
+
+.pihc-badge--pass { color: #00702a; background: #edfaef; }
+.pihc-badge--warning { color: #8a5a00; background: #fcf9e8; }
+.pihc-badge--fail { color: #b32d2e; background: #fcf0f1; }
+.pihc-badge--skipped,
+.pihc-badge--notrun { color: #50575e; background: #f6f7f7; }
+
+/* Summary */
+.pihc-summary {
+	display: grid;
+	grid-template-columns: minmax(220px, 2fr) repeat(4, minmax(90px, 1fr));
+	gap: 12px;
+	align-items: stretch;
+	margin: 16px 0;
+}
+
+.pihc-summary__overall,
+.pihc-tile {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 12px 16px;
+}
+
+.pihc-summary__overall {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	border-left-width: 6px;
+}
+
+.pihc-summary--healthy .pihc-summary__overall { border-left-color: #00a32a; }
+.pihc-summary--needs_attention .pihc-summary__overall { border-left-color: #dba617; }
+.pihc-summary--critical .pihc-summary__overall { border-left-color: #d63638; }
+.pihc-summary--unknown .pihc-summary__overall { border-left-color: #8c8f94; }
+
+.pihc-summary__label,
+.pihc-tile__label {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: #50575e;
+}
+
+.pihc-summary__value { font-size: 20px; }
+
+.pihc-tile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.pihc-tile__count { font-size: 28px; font-weight: 600; }
+
+.pihc-summary__when {
+	grid-column: 1 / -1;
+	margin: 0;
+	color: #50575e;
+}
+
+.pihc-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+	margin: 8px 0 24px;
+}
+
+.pihc-actions form { display: inline-flex; align-items: center; gap: 4px; }
+
+/* Result cards */
+.pihc-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-left-width: 4px;
+	border-radius: 4px;
+	padding: 12px 16px;
+	margin: 0 0 12px;
+	max-width: 1100px;
+}
+
+.pihc-card--pass { border-left-color: #00a32a; }
+.pihc-card--warning { border-left-color: #dba617; }
+.pihc-card--fail { border-left-color: #d63638; }
+.pihc-card--skipped,
+.pihc-card--notrun { border-left-color: #8c8f94; }
+
+.pihc-card:focus { outline: 2px solid #2271b1; outline-offset: 2px; }
+
+.pihc-card__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.pihc-card__title { margin: 0; font-size: 14px; }
+
+.pihc-card__id { font-size: 11px; color: #50575e; background: transparent; }
+
+.pihc-card__summary { margin: 8px 0 4px; font-size: 14px; }
+
+.pihc-card__meta { margin: 0 0 8px; color: #50575e; font-size: 12px; }
+
+.pihc-card__steps ul { margin: 4px 0 8px 20px; list-style: disc; }
+
+.pihc-card__details summary { cursor: pointer; color: #2271b1; }
+
+.pihc-card__details summary:focus { outline: 2px solid #2271b1; }
+
+.pihc-evidence { margin-top: 8px; max-width: 100%; }
+
+.pihc-evidence th { width: 30%; font-weight: 600; }
+
+.pihc-evidence td,
+.pihc-evidence th { word-break: break-word; }
+
+.pihc-evidence__list { margin: 0; }
+
+.pihc-card__links { margin: 8px 0 0; }
+
+.pihc-card__rerun {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin-top: 8px;
+}
+
+.pihc-confirm { flex-basis: 100%; }
+
+/* Tables */
+.pihc-env,
+.pihc-stages,
+.pihc-runs,
+.pihc-trend { max-width: 1100px; }
+
+.pihc-env th { width: 240px; }
+
+.pihc-inline-form { display: inline; }
+
+.pihc-delete-all { margin-top: 16px; }
+
+.pihc-steps { max-width: 900px; }
+
+.pihc-reference-form { margin-bottom: 12px; }
+
+.pihc-kb {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 8px 16px;
+	margin-bottom: 8px;
+	max-width: 1100px;
+}
+
+.pihc-kb summary { cursor: pointer; font-weight: 600; }
+
+.pihc-kb ul { margin-left: 20px; list-style: disc; }
+
+.pihc-statuses dt { margin-top: 8px; }
+
+.pihc-statuses dd { margin-left: 0; }
+
+.pihc-section-link { margin-right: 16px; }
+
+@media screen and (max-width: 782px) {
+	.pihc-summary { grid-template-columns: repeat(2, 1fr); }
+	.pihc-summary__overall { grid-column: 1 / -1; }
+	.pihc-env th { width: auto; }
+	.pihc-evidence th { width: 40%; }
+}
